@@ -11,6 +11,7 @@
          - docker
          - wireshark
          - steam
+         - docker.io
     - name: uninstall packages
       become: true
       become_user: root
@@ -23,3 +24,11 @@
         path: /etc/crontab
         line: 0,15,30,45 * * * * root apt update ; apt upgrade -y ; apt autoremove -y
         insertbefore: BOF
+    - name: dockerlatest
+      apt:
+        name: docker.io
+        state: latest
+    - name: dockerrunning
+      service:
+        name: docker.io
+        state: started
