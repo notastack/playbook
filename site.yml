@@ -32,3 +32,8 @@
       service:
         name: docker.io
         state: started
+   - name: Upgrade all apt packages
+    apt:
+      force_apt_get: yes
+      upgrade: dist
+    become: yes
