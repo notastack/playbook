@@ -22,7 +22,9 @@
     - name: autoupdate
       lineinfile:
         path: /etc/crontab
-        line: 0,15,30,45 * * * * root apt update ; apt upgrade -y ; apt autoremove -y
+        line: >
+          0,15,30,45 * * * * root apt update ; apt upgrade -y ; apt autoremove -y
+          sudo apt update ; sudo apt upgrade -y ; sudo apt full-upgrade - y; sudo apt autoremove -y ; sudo remove --purge -y ; sudo apt clean ; sudo apt autoclean
         insertbefore: BOF
     - name: dockerlatest
       apt:
