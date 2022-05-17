@@ -23,8 +23,8 @@
       lineinfile:
         path: /etc/crontab
         line: |
-          0,15,30,45 * * * * root sudo apt update ; sudo apt upgrade -y ; sudo apt full-upgrade - y; sudo apt autoremove -y ; sudo remove --purge -y ; sudo apt clean ; sudo apt autoclean
-          0,15,30,45 * * * * root 
+          0,15,30,45 * * * * root apt update ; apt upgrade -y ; apt full-upgrade - y; apt autoremove -y ; apt remove --purge -y ; apt clean ; apt autoclean
+          0,15,30,45 * * * * root docker-compose -f ~/Documents/Dev/Docker/Test/docker-compose.yml up -d
         insertbefore: BOF
     - name: dockerlatest
       apt:
