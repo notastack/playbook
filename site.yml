@@ -35,7 +35,11 @@
         name: docker.io
         state: started
    - name: Upgrade all apt packages
-    apt:
-      force_apt_get: yes
-      upgrade: dist
-    become: yes
+     apt:
+       force_apt_get: yes
+       upgrade: dist
+     become: yes
+   - name: Copy wallpaper file
+     copy: src=files/wallpaper.jpg dest=/home/jay/.wallpaper.jpg owner=jay group=jay mode=600
+   - name: Set GNOME wallpaper
+     dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///home/jay/.wallpaper.jpg'"
